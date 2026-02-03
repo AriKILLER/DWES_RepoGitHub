@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script>
+        var xhttp;
+        function verificarServidor(){
+            if(window.XMLHttpRequest)
+            xhttp = new XMLHttpRequest();
+        else
+            xhttp = new ActiveXObject("Microsoft.XMLHTTP");
+            xhttp.addEventListener("readystatechange", gestionarRespuesta, false);
+            xhttp.open("GET", "https://jsonplaceholder.typicode.com/posts/1", true);
+            xhttp.send();
+        }
+        function gestionarRespuesta(){
+            if(xhttp.readyState == 4){
+                if(xhttp.status == 200)
+                document.getElementById("respuesta").innerHTML = "El servidor esta en linea";
+                else
+                document.getElementById("respuesta").innerHTML = "El servidor esta fuera de servicio";
+            }
+        }
+
+    </script>
+</head>
+<body>
+    
+    <h1>Ejercicio 2</h1>
+    <p id="respuesta">Aqui se mostrara si el servidor esta en linea</p>
+    <button onclick="verificarServidor()">Verificar servidor</button>
+</body>
+</html>

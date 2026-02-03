@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+
+    <script>
+        function Smartphone(marca, modelo, color, tamaño) {
+        this.marca = marca;
+        this.modelo = modelo;
+        this.color = color;
+        this.tamaño = tamaño;
+
+        this.instalarAplicacion = function(apli) {
+            alert("Aplicacion " + apli + " instalada con exito en smartphone " + this.marca + " " + this.modelo);
+        }
+
+        this.enviarCorreo = function(mensa) {
+            alert("Mensaje: " + mensa + " enviado con exito");
+        }
+
+        this.llamar = function(num) {
+            alert("Llamando al " + num + " ...desde mi smartphone con tamaño " + this.tamaño + " pulgadas");
+        }
+    }
+
+    // Añadir método usando el patrón prototipo
+    Smartphone.prototype.obtenDatosSmartPhone = function() {
+        let datos = "Datos del Smartphone: \n" +
+                    "Marca: " + this.marca + "\n" +
+                    "Modelo: " + this.modelo + "\n" +
+                    "Color: " + this.color + "\n" +
+                    "Tamaño: " + this.tamaño + " pulgadas";
+        alert(datos);
+    }
+
+    let smartphone1 = new Smartphone("Xiaomi", "Redmi Note 13", "Azul", 6.60);
+    smartphone1.instalarAplicacion("Clash Royale");
+    smartphone1.enviarCorreo("Hola, como estas?");
+    smartphone1.llamar("1234567890");
+    
+    // Llamar al método añadido con el patrón prototipo
+    smartphone1.obtenDatosSmartPhone();
+    </script>
+    
+</body>
+</html>

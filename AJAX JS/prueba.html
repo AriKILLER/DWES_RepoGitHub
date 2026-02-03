@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8"/>
+    <title>Ajax</title>
+    <script>
+    var xhttp;
+    function cargarDoc() {
+    if (window.XMLHttpRequest)
+    xhttp = new XMLHttpRequest();
+    else
+    xhttp = new ActiveXObject("Microsoft.XMLHTTP");
+    xhttp.addEventListener("readystatechange", gestionarRespuesta, false);
+    xhttp.open("GET", "ajax_info.txt", true);
+    xhttp.send();
+    }
+    function gestionarRespuesta() {
+    if (xhttp.readyState == 4 && xhttp.status == 200)
+    document.getElementById("destino").innerHTML = xhttp.responseText;
+    }
+    </script>
+</head>
+<body>
+    <h1>El objeto XMLHttpRequest</h1>
+    <hr/>
+    <p id="destino">Permite a AJAX cambiar este texto</p>
+    <button type="button" onclick="cargarDoc()">Cambiar el contenido</button>
+</body>
+</html>

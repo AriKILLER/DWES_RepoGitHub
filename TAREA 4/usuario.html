@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Arrays</title>
+</head>
+<body>
+    
+    <h1>Trabajando con Arrays</h1>
+    <p id="pares"></p>
+    <p id="impares"></p>
+    <p>Arianna Vilchez Liebanas 77771603R</p>
+
+    <script>
+        function esEntero(n) {
+            if (n === null || n === "" || isNaN(n) || !Number.isInteger(Number(n)) || Number(n) <= 0) {
+                return false;
+            }
+            return true;
+        }
+
+        let n;
+        let inputN;
+        do {
+            inputN = prompt("Introduce un número entero positivo para el tamaño del array:");
+            n = Number(inputN);
+            
+            if (!esEntero(inputN)) {
+                alert("Error: Debes introducir un número entero positivo mayor que 0");
+            }
+        } while (!esEntero(inputN));
+
+        let arrayNumeros = [];
+
+        for (let i = 0; i < n; i++) {
+            let inputNumero;
+            let numero;
+            do {
+                inputNumero = prompt(`Introduce el número ${i + 1} de ${n} (entero positivo):`);
+                numero = Number(inputNumero);
+                if (!esEntero(inputNumero)) {
+                    alert("Error: Debes introducir un número entero positivo mayor que 0");
+                }
+            } while (!esEntero(inputNumero));
+            arrayNumeros.push(numero);
+        }
+        console.log("Array completado:", arrayNumeros);
+        alert("Array completado: " + arrayNumeros.join(", "));
+        arrayNumeros.sort((a, b) => a - b);
+        alert("Array ordenado de menor a mayor: " + arrayNumeros.join(", "));
+
+        // Filtrar elementos pares y ordenarlos
+        let arrayPares = arrayNumeros.filter(num => num % 2 === 0).sort((a, b) => a - b);
+        
+        // Filtrar elementos impares y ordenarlos
+        let arrayImpares = arrayNumeros.filter(num => num % 2 !== 0).sort((a, b) => a - b);
+
+        // Mostrar en el documento HTML
+        document.getElementById("pares").innerHTML = "<strong>Números pares ordenados:</strong> " + arrayPares.join(", ");
+        document.getElementById("impares").innerHTML = "<strong>Números impares ordenados:</strong> " + arrayImpares.join(", ");
+
+    </script>
+
+</body>
+</html>

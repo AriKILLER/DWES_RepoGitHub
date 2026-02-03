@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script>
+        var xhttp;
+        function cargarTxt(){
+            if(window.XMLHttpRequest)
+            xhttp = new XMLHttpRequest();
+        else
+            xhttp = new ActiveXObject("Microsoft.XMLHTTP");
+            xhttp.addEventListener("readystatechange", gestionarRespuesta, false);
+            xhttp.open("GET", "datos.txt", true);
+            xhttp.send();
+        }
+        function gestionarRespuesta(){
+            if(xhttp.readyState == 4 && xhttp.status == 200)
+            document.getElementById("contenido").innerHTML = xhttp.responseText;
+        }
+    </script>
+</head>
+<body>
+    
+    <h1>Ejercicio 1</h1>
+    <p id="contenido">Este texto va a ser cambiado</p>
+    <button onclick="cargarTxt()">Cambiar texto</button>
+
+
+</body>
+</html>
